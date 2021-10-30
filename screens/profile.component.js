@@ -1,6 +1,7 @@
 import React from 'react';
 import { SafeAreaView } from 'react-native';
-import { Divider, Icon, Layout, Text, TopNavigation, TopNavigationAction } from '@ui-kitten/components';
+import { Divider, Icon, Layout, Text, Button, TopNavigationAction } from '@ui-kitten/components';
+import { ThemeContext } from '../theme-context';
 
 const BackIcon = (props) => (
   <Icon {...props} name='arrow-back' />
@@ -8,9 +9,8 @@ const BackIcon = (props) => (
 
 export const ProfileScreen = ({ navigation }) => {
 
-  const navigateBack = () => {
-    navigation.goBack();
-  };
+  const themeContext = React.useContext(ThemeContext);
+  console.log(themeContext.theme);
 
   const BackAction = () => (
     <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
@@ -22,6 +22,7 @@ export const ProfileScreen = ({ navigation }) => {
       <Divider/>
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text category='h6'>This Is Profile.</Text>
+        <Button style={{ marginVertical: 10 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>
       </Layout>
     </SafeAreaView>
   );
