@@ -15,11 +15,7 @@ export const FeedScreen = ({ navigation }) => {
         } else {
           return false;
         }
-        // setStatus(json.Response);
-        // data.map((item, index) => {
-        //   console.log(item)
-        // });
-        // console.log("TYPEOF JSON ::::::" + typeof(json))
+  
       });
   };
 

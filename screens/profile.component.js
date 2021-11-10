@@ -16,6 +16,10 @@ export const ProfileScreen = ({ navigation }) => {
     <TopNavigationAction icon={BackIcon} onPress={navigateBack}/>
   );
 
+  const navigateHome = () => {
+    navigation.navigate('Home');
+  };
+
   return (
     <SafeAreaView style={{ flex: 1 }}>
       {/* <TopNavigation title='MyApp' alignment='center' accessoryLeft={BackAction}/> */}
@@ -23,6 +27,7 @@ export const ProfileScreen = ({ navigation }) => {
       <Layout style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text category='h6'>This Is Profile.</Text>
         <Button style={{ marginVertical: 10 }} onPress={themeContext.toggleTheme}>TOGGLE THEME</Button>
+        <Button style={{ marginVertical: 10 }} onPress={navigateHome}>Home</Button>
       </Layout>
     </SafeAreaView>
   );

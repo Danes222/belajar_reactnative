@@ -1,10 +1,19 @@
 import React from "react";
-import { StyleSheet, View, Image } from "react-native";
+import { StyleSheet, View, Image, TouchableOpacity } from "react-native";
 import { Layout, ViewPager, Text } from "@ui-kitten/components";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Swiper from "react-native-web-swiper";
 import { styles } from "./style";
+import { Blog } from './../blog.component';
 
-export const LayoutLevelShowcase = () => {
+const { Navigator, Screen } = createBottomTabNavigator();
+
+export const LayoutLevelShowcase = ({ navigation }) => {
+
+  const navigateBlog = () => {
+    navigation.navigate('Blog');
+  };
+
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
   const shouldLoadComponent = (index) => index === selectedIndex;
@@ -36,24 +45,7 @@ export const LayoutLevelShowcase = () => {
         </Layout>
       </Layout>
 
-      <Layout style={styles.menu}>
-        <Layout style={styles.menuItem}>
-          <Layout style={styles.menuItemImage} level="4" />
-          <Text style={styles.menuItemText}>Lokasi</Text>
-        </Layout>
-        <Layout style={styles.menuItem}>
-          <Layout style={styles.menuItemImage} level="4" />
-          <Text style={styles.menuItemText}>Bidang</Text>
-        </Layout>
-        <Layout style={styles.menuItem}>
-          <Layout style={styles.menuItemImage} level="4" />
-          <Text style={styles.menuItemText}>Blog</Text>
-        </Layout>
-        <Layout style={styles.menuItem}>
-          <Layout style={styles.menuItemImage} level="4" />
-          <Text style={styles.menuItemText}>FAQ</Text>
-        </Layout>
-      </Layout>
+      
 
       <Layout style={styles.info}>
         <Layout style={styles.infoItem} level="4">
