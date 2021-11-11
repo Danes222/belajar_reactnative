@@ -5,7 +5,7 @@ export const styles = StyleSheet.create({
     width: "90%",
     flex: 1,
     flexDirection: "column",
-    marginTop: 50,
+    marginTop: 40,
   },
 
   slideBanner: {
@@ -88,8 +88,8 @@ export const styles = StyleSheet.create({
   },
 
   tinyLogo: {
-    width: 50,
-    height: 50,
+    width: "100%",
+    height: "100%",
   },
 
   layout: {

@@ -41,20 +41,20 @@ const TabNavigator = () => (
   <Navigator tabBar={(props) => <BottomTabBar {...props} />}>
     <Screen
       name="Home"
-      options={{ headerShown: false, title: "Awesome app" }}
+      options={{ headerShown: true, title: "Home Screen" }}
       component={HomeScreen}
     />
     <Screen
       name="Feed"
-      options={{ headerShown: false }}
+      options={{ headerShown: true }}
       component={FeedScreen}
     />
     <Screen
       name="Details"
-      options={{ headerShown: false }}
+      options={{ headerShown: true }}
       component={ProfileScreen}
     />
-    <Screen name="Blog" options={{ headerShown: false }} component={Blog} />
+    <Screen name="Blog" options={{ headerShown: true }} component={Blog} />
   </Navigator>
 );
 
