@@ -1,5 +1,5 @@
 // Menggunakan class component
-import React from "react";
+import React, { useState } from "react";
 import { SafeAreaView, ScrollView } from "react-native";
 import {
   Layout,
@@ -12,42 +12,47 @@ import { View } from "react-native";
 import { styles } from "./assets/style";
 
 export const Blog = ({ navigation }) => {
-  const modalID = "";
+  const [data, setData] = useState([]);
 
-  const renderModalContentElement = () => {
-    return (
-      <Layout>
-        <Text>Hi, I'm modal!</Text>
-      </Layout>
-    );
-  };
-
-  const showModal = () => {
-    const contentElement = this.renderModalContentElement();
-    this.modalID = ModalService.show(contentElement, {
-      onBackdropPress: this.hideModal,
-    });
-  };
-
-  const hideModal = () => {
-    ModalService.hide(this.modalID);
+  const search = () => {
+    fetch("https://blog-danes.herokuapp.com/api/latest-blogs")
+      .then((response) => response.json())
+      .then((json) => {
+        setData(json);
+        // console.log(json)
+      });
   };
 
   return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <ScrollView>
-        <Divider />
-        <Layout
-          style={{ height: 700, justifyContent: "center", alignItems: "center" }}
-        >
-          <Layout style={styles.container, {justifyContent: 'center', alignItems: 'center'}}>
-            <Layout style={{}}>
-              <Button onPress={showModal}>SHOW MODAL</Button>
-              <Button onPress={hideModal}>HIDE MODAL</Button>
+    <Layout style={{ flex: 1 }} >
+      <SafeAreaView style={{ flex: 1 }}>
+        <ScrollView>
+          <Divider />
+          <Layout
+            style={{
+              flex: 1,
+              paddingHorizontal: 15,
+              paddingTop: 40,
+              paddingBottom: 40,
+            }}
+          >
+            <Layout>
+              <Button onPress={search()}>Show Blogs</Button>
+            </Layout>
+            <Layout style={{ flexDirection: 'row', flex: 1, flexWrap: 'wrap', justifyContent: 'center' }}>
+              {data.map((item, index) => {
+                return (
+                  <Layout level='4'  key={index} style={{ padding: 10, width: '100%', height: 200, marginHorizontal: 5, marginVertical: 5 }} >
+                    <Text>{item.title}</Text>
+                    <Text>{item.date_created.slice(0, 10)}</Text>
+                    <Button onPress={() => navigation.navigate('Show Blog', {slug:item.slug})}>Go..</Button>
+                  </Layout>
+                )
+              })}
             </Layout>
           </Layout>
-        </Layout>
-      </ScrollView>
-    </SafeAreaView>
+        </ScrollView>
+      </SafeAreaView>
+    </Layout>
   );
 };

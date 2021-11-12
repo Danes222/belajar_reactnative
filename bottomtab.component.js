@@ -5,6 +5,7 @@ import { HomeScreen } from "./screens/home.component";
 import { ProfileScreen } from "./screens/profile.component";
 import { FeedScreen } from "./screens/feed.component";
 import { Blog } from "./screens/blog.component";
+import { ShowBlog } from "./screens/showblog.component";
 import {
   BottomNavigation,
   BottomNavigationTab,
@@ -34,6 +35,7 @@ const BottomTabBar = ({ navigation, state }) => (
     <BottomNavigationTab icon={FeedIcon} title="Feed" />
     <BottomNavigationTab icon={ProfileIcon} title="Profile" />
     <BottomNavigationTab title="Blog" style={{ display: "none" }} />
+    <BottomNavigationTab title="Show Blog" style={{ display: "none" }} />
   </BottomNavigation>
 );
 
@@ -55,6 +57,7 @@ const TabNavigator = () => (
       component={ProfileScreen}
     />
     <Screen name="Blog" options={{ headerShown: true }} component={Blog} />
+    <Screen name="Show Blog" options={{ headerShown: false }} component={ShowBlog} />
   </Navigator>
 );
 
